@@ -64,6 +64,33 @@ for character in soup.find_all('character'):
                 if not meaning.has_attr('m_lang')
         ] or None
 
+    # JLPT level
+    misc_data = character.misc
+
+    if misc_data.jlpt:
+        character_data['jlpt'] = int(character.misc.jlpt.text)
+    else:
+        character_data['jlpt'] = None
+
+    # Grade
+    grade = {}
+    if misc_data.grade:
+        grade_level = int(misc_data.grade.text)
+        
+        # Grade level
+        if grade_level <= 6:
+            grade['level'] = grade_level
+        else:
+            grade['level'] = None
+        
+        # Secondary school
+        grade['secondary_school'] = grade_level == 8
+
+        # Jinmeijou
+        grade['jinmeiyou'] = grade_level == 9 or grade_level == 10
+
+    character_data['grade'] = grade
+
     # And finally...
     characters.append(character_data)
 

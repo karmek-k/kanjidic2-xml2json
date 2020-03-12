@@ -36,7 +36,13 @@ If output_filename is not given, the program will set it to `kanjidic2.json`.
       "rank next",
       "come after",
       "-ous"
-    ]
+    ],
+    "jlpt": 1,
+    "grade": {
+      "level": null,
+      "secondary_school": true,
+      "jinmeiyou": false
+    }
   }
 ]
 ```
