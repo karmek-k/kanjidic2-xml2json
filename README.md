@@ -15,9 +15,30 @@ python convert.py <input_filename> [output_filename]
 If output_filename is not given, the program will set it to `kanjidic2.json`.
 
 ### Example output
-
+*The actual output is not formatted.*
 ```json
-[{"literal": "亜", "onyomi": ["ア"], "kunyomi": ["つ.ぐ"], "nanori": ["や", "つぎ", "つぐ"], "meanings": ["Asia", "rank next", "come after", "-ous"]}]
+[
+  {
+    "literal": "亜",
+    "onyomi": [
+      "ア"
+    ],
+    "kunyomi": [
+      "つ.ぐ"
+    ],
+    "nanori": [
+      "や",
+      "つぎ",
+      "つぐ"
+    ],
+    "meanings": [
+      "Asia",
+      "rank next",
+      "come after",
+      "-ous"
+    ]
+  }
+]
 ```
 This corresponds to (formatted) KANJIDIC2's:
 ```xml
