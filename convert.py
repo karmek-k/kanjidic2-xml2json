@@ -35,6 +35,7 @@ for character in soup.find_all('character'):
     except AttributeError:
         character_data['onyomi'] = None
         character_data['kunyomi'] = None
+        character_data['meanings'] = None
         rmgroup_present = False
     else:
         rmgroup_present = True
@@ -42,10 +43,12 @@ for character in soup.find_all('character'):
     # Readings
     if rmgroup_present:
         character_data['onyomi'] = [
-            yomi.text for yomi in rm.find_all('reading') if yomi['r_type'] == 'ja_on'
+            yomi.text for yomi in rm.find_all('reading') 
+                if yomi['r_type'] == 'ja_on'
         ] or None
         character_data['kunyomi'] = [
-            yomi.text for yomi in rm.find_all('reading') if yomi['r_type'] == 'ja_kun'
+            yomi.text for yomi in rm.find_all('reading') 
+                if yomi['r_type'] == 'ja_kun'
         ] or None
 
     # Nanori readings
@@ -53,6 +56,13 @@ for character in soup.find_all('character'):
     character_data['nanori'] = [
         yomi.text for yomi in nanori
     ] or None
+
+    # English meanings
+    if rmgroup_present:
+        character_data['meanings'] = [
+            meaning.text for meaning in rm.find_all('meaning') 
+                if not meaning.has_attr('m_lang')
+        ] or None
 
     # And finally...
     characters.append(character_data)
