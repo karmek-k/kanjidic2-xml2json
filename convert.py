@@ -18,6 +18,7 @@ with open(FILE_NAME, encoding='utf8') as f:
 characters = []
 
 # Iterate over dict items
+# TODO: break the code into functions
 for character in soup.find_all('character'):
     character_data = {}
     
@@ -35,14 +36,20 @@ for character in soup.find_all('character'):
         character_data['onyomi'] = None
         character_data['kunyomi'] = None
         continue
-    
+
     # Readings
     character_data['onyomi'] = [
         yomi.text for yomi in rm.find_all('reading') if yomi['r_type'] == 'ja_on'
-    ]
+    ] or None
     character_data['kunyomi'] = [
         yomi.text for yomi in rm.find_all('reading') if yomi['r_type'] == 'ja_kun'
-    ]
+    ] or None
+
+    # Nanori readings
+    nanori = character.reading_meaning.find_all('nanori')
+    character_data['nanori'] = [
+        yomi.text for yomi in nanori
+    ] or None
 
     # And finally...
     characters.append(character_data)

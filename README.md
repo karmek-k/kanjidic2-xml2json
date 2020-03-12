@@ -17,7 +17,7 @@ If output_filename is not given, the program will set it to `kanjidic2.json`.
 ### Example output
 
 ```json
-[{"literal": "亜", "onyomi": ["ア"], "kunyomi": ["つ.ぐ"]}]
+[{"literal": "亜", "onyomi": ["ア"], "kunyomi": ["つ.ぐ"], "nanori": ["や", "つぎ", "つぐ"]}]
 ```
 This corresponds to (formatted) KANJIDIC2's:
 ```xml
