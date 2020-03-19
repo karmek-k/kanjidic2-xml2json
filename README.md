@@ -12,7 +12,7 @@ so if you'd rather install them using your package manager, then go for it.
 ```
 python convert.py <input_filename> [output_filename]
 ```
-If output_filename is not given, the program will set it to `kanjidic2.json`.
+If `output_filename` is not given, the program will set it to `kanjidic2.json`.
 
 ### Example output
 *The actual output is not formatted.*
